@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Replace YOUR_WORKSPACE_CODE with the same value as NEXT_PUBLIC_WORKSPACE_CODE.
+    // Only this one secret path is readable/writable; everything else is blocked.
+    match /workspaces/YOUR_WORKSPACE_CODE/{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
